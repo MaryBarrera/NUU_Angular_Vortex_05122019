@@ -1,0 +1,42 @@
+<h3>Agregar empleado</h3>
+<form (submit)="submit()" [formGroup]="empleadoForm">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+        <div *ngIf="empleadoForm.get('nombre').invalid && (empleadoForm.get('nombre').dirty || empleadoForm.get('nombre').touched)" class="alert alert-danger">
+            <div *ngIf="empleadoForm.get('nombre').errors.required">
+                El nombre de usuario es requerido
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="apaterno">Apellido Paterno</label>
+        <input type="text" class="form-control" id="apaterno" placeholder="Apellido Paterno" formControlName="apaterno">
+        <div *ngIf="empleadoForm.get('apaterno').invalid && (empleadoForm.get('apaterno').dirty || empleadoForm.get('apaterno').touched)" class="alert alert-danger">
+            <div *ngIf="empleadoForm.get('apaterno').errors.required">
+                El apaterno de usuario es requerido
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="amaterno">Apellido Materno</label>
+        <input type="text" class="form-control" id="amaterno" placeholder="Apellido Materno" formControlName="amaterno">
+        <div *ngIf="empleadoForm.get('amaterno').invalid && (empleadoForm.get('amaterno').dirty || empleadoForm.get('amaterno').touched)" class="alert alert-danger">
+            <div *ngIf="empleadoForm.get('amaterno').errors.required">
+                El amaterno de usuario es requerido
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="puesto">Puesto</label>
+        <input type="text" class="form-control" id="puesto" placeholder="Apellido Materno" formControlName="puesto">
+        <div *ngIf="empleadoForm.get('puesto').invalid && (empleadoForm.get('puesto').dirty || empleadoForm.get('puesto').touched)" class="alert alert-danger">
+            <div *ngIf="empleadoForm.get('puesto').errors.required">
+                El puesto de usuario es requerido
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="empleadoForm.invalid">Enviar</button>
+    <button type="button" class="btn btn-default" (click)="refrescar()">Refrescar</button>
+</form>

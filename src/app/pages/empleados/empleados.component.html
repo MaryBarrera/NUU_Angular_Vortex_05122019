@@ -1,0 +1,42 @@
+<h3>Lista de Empleados</h3>
+
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <input type="text" class="form-control" name="filterEmpleado" placeholder="Buscar..." [(ngModel)]="filterEmpleado">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <button type="button" class="btn btn-success" routerLink="/empleados/create">Crear</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>AP</th>
+                    <th>AM</th>
+                    <th>PUESTO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empleado of empleados | buscaEmpleado:filterEmpleado">
+                    <td>{{empleado.id}}</td>
+                    <td>{{empleado.nombre}}</td>
+                    <td>{{empleado.apaterno}}</td>
+                    <td>{{empleado.amaterno}}</td>
+                    <td>{{empleado.puesto}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary"
+                            routerLink="/empleados/{{empleado.id}}">Ver</button>
+                        <button type="button" class="btn btn-danger"
+                            (click)="deleteEmpleado(empleado.id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
